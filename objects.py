@@ -7,24 +7,24 @@ class Board:
     
     def display(self):
         # first row
-        print("                            +-----------+")
-        print("                            | ", end="")
+        print("                           +-----------+")
+        print("                           | ", end="")
         for self.field in self.fields[:3]:
             print(self.field, end=" | ")
         print()
         # second row
-        print("                            +-----------+")
-        print("                            | ", end="")
+        print("                           +-----------+")
+        print("                           | ", end="")
         for self.field in self.fields[3:6]:
             print(self.field, end=" | ")
         print()
         # third row
-        print("                            +-----------+")
-        print("                            | ", end="")
+        print("                           +-----------+")
+        print("                           | ", end="")
         for self.field in self.fields[6:]:
             print(self.field, end=" | ")
         print()
-        print("                            +-----------+") 
+        print("                           +-----------+") 
 
 
     def update(self, move, sign):
@@ -51,7 +51,7 @@ class Board:
             if sign == "X":
                 winner = "Computer"
             else:
-                winner = "You"
+                winner = "  You "
             return victory, winner
         else:
             winner = None
@@ -86,7 +86,7 @@ class HumanPlayer(Player):
         while True:
             try:
                 self.move = int(input('''                           
-                          Enter your move: ''')) 
+                         Enter your move: ''')) 
                 if self.move > 0 and self.move < 10:
                     free = board.check_field(self.move)
                     if free:
@@ -97,7 +97,7 @@ class HumanPlayer(Player):
                               ''')
             except ValueError:
                 print('''                         
-        Input must be a free Integer within the field's range 1 - 9.
+    Input must be a free Integer within the field's range 1 - 9.
                       ''')
     
 
@@ -107,13 +107,13 @@ class ComputerPlayer(Player):
 
     def first_move(self):
         print('''                    
-                           Computer's move: 
+                          Computer's move: 
               ''')
         self.move = 5
 
     def choose_move(self, board):
         print('''                    
-                           Computer's move: 
+                          Computer's move: 
               ''')
         while True:
             self.move = randint(0, 10)
