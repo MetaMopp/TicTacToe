@@ -37,25 +37,25 @@ class Board:
             self.free = False
         return self.free
 
-    def check_victory(self):
-        if self.fields[:3] == "X" or self.fields[3:6] == "X" or self.fields[6:] == "X"\
-        or self.fields[0] == "X" and self.fields[3] == "X" and self.fields[6] == "X"\
-        or self.fields[1] == "X" and self.fields[4] == "X" and self.fields[7] == "X"\
-        or self.fields[2] == "X" and self.fields[5] == "X" and self.fields[8] == "X"\
-        or self.fields[0] == "X" and self.fields[4] == "X" and self.fields[8] == "X"\
-        or self.fields[2] == "X" and self.fields[4] == "X" and self.fields[6] == "X":
-            self.victory_message = "The Computer won the Game."
-            self.running = False
-            return self.victory_message
-        elif self.fields[:3] == "O" or self.fields[3:6] == "O" or self.fields[6:] == "O"\
-        or self.fields[0] == "O" and self.fields[3] == "O" and self.fields[6] == "O"\
-        or self.fields[1] == "O" and self.fields[4] == "O" and self.fields[7] == "O"\
-        or self.fields[2] == "O" and self.fields[5] == "O" and self.fields[8] == "O":
-            self.victory_message = "You won the Game."
-            self.running = False
-            return self.victory_message
+    def check_victory(self, sign):
+        victory = False
+        if self.fields[0] == sign and self.fields[1] == sign and self.fields[2] == sign\
+        or self.fields[3] == sign and self.fields[4] == sign and self.fields[5] == sign\
+        or self.fields[6] == sign and self.fields[7] == sign and self.fields[8] == sign\
+        or self.fields[0] == sign and self.fields[3] == sign and self.fields[6] == sign\
+        or self.fields[1] == sign and self.fields[4] == sign and self.fields[7] == sign\
+        or self.fields[2] == sign and self.fields[5] == sign and self.fields[8] == sign\
+        or self.fields[0] == sign and self.fields[4] == sign and self.fields[8] == sign\
+        or self.fields[2] == sign and self.fields[4] == sign and self.fields[6] == sign:
+            victory = True
+            if sign == "X":
+                winner = "Computer"
+            else:
+                winner = "You"
+            return victory, winner
         else:
-            pass
+            winner = None
+            return victory, winner
 
 # basic class 
 class Player:
@@ -75,6 +75,8 @@ class HumanPlayer(Player):
                     free = board.check_field(self.move)
                     if free:
                         break
+                    else: 
+                        print("Try again...")
             except ValueError:
                 print("Input must be a free Integer within the field's range 1 - 9.")
     
