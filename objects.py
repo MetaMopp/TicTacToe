@@ -7,24 +7,24 @@ class Board:
     
     def display(self):
         # first row
-        print("+-----------+")
-        print("| ", end="")
+        print("                            +-----------+")
+        print("                            | ", end="")
         for self.field in self.fields[:3]:
             print(self.field, end=" | ")
         print()
         # second row
-        print("+-----------+")
-        print("| ", end="")
+        print("                            +-----------+")
+        print("                            | ", end="")
         for self.field in self.fields[3:6]:
             print(self.field, end=" | ")
         print()
         # third row
-        print("+-----------+")
-        print("| ", end="")
+        print("                            +-----------+")
+        print("                            | ", end="")
         for self.field in self.fields[6:]:
             print(self.field, end=" | ")
         print()
-        print("+-----------+")
+        print("                            +-----------+") 
 
 
     def update(self, move, sign):
@@ -85,15 +85,20 @@ class HumanPlayer(Player):
     def choose_move(self, board):
         while True:
             try:
-                self.move = int(input("Enter your move: ")) 
+                self.move = int(input('''                           
+                          Enter your move: ''')) 
                 if self.move > 0 and self.move < 10:
                     free = board.check_field(self.move)
                     if free:
                         break
                     else: 
-                        print("Try again...")
+                        print('''                           
+                            Try again...
+                              ''')
             except ValueError:
-                print("Input must be a free Integer within the field's range 1 - 9.")
+                print('''                         
+        Input must be a free Integer within the field's range 1 - 9.
+                      ''')
     
 
 class ComputerPlayer(Player):
@@ -101,11 +106,15 @@ class ComputerPlayer(Player):
         super().__init__(sign)
 
     def first_move(self):
-        print("Computer's turn: ")
+        print('''                    
+                           Computer's move: 
+              ''')
         self.move = 5
 
     def choose_move(self, board):
-        print("Computer's turn: ")
+        print('''                    
+                           Computer's move: 
+              ''')
         while True:
             self.move = randint(0, 10)
             if self.move > 0 and self.move < 10:
