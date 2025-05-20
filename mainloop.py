@@ -18,8 +18,9 @@ while game.running:
             game.running = True
             sleep(1)
             game.board.fields = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-            print('''                      
-                              Welcome back!
+            print('''     
+                         ~~~~~~~~~~~~~~~~                
+                           Welcome back!
                   ''')
         else:
             exit()
