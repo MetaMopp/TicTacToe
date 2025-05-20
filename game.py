@@ -12,6 +12,7 @@ class Game:
         self.human = HumanPlayer("O")
         self.computer = ComputerPlayer("X")
         self.winner = None
+        self.draw = None
 
     def welcome(self):
         ttt_font = Figlet(font='big')
@@ -21,12 +22,15 @@ class Game:
 \ \__/ / __ \ \__/ / __ \ \__/ / __ \ \__/ / __ \ \__/ / __ \ \__/ / _
  \____/ /  \ \____/ /  \ \____/ /  \ \____/ /  \ \____/ /  \ \____/ / 
         ''')
+        sleep(1)
         print(ttt_font.renderText(' TIC TAC TOE') , end="")
+        sleep(1)
         print('''
                 ||================================||
                 ||<> < metamopp[at]gmail.com > <> ||           
                 ||================================||
         ''')
+        sleep(1)
         print('''
  / __ \ \__/ / __ \ \__/ / __ \ \__/ / __ \ \__/ / __ \ \__/ / __ \ \_
 / /  \ \____/ /  \ \____/ /  \ \____/ /  \ \____/ /  \ \____/ /  \ \__
@@ -38,9 +42,12 @@ class Game:
         print(f"{self.winner} won!")
         sleep(3)
 
+    def declare_draw(self):
+        print("Draw.")
+        sleep(3)
+
     def run(self):
-        # display
-        #self.board.display()
+        # start condition
         if "X" not in self.board.fields:
             self.board.display()
             print("Computer's sign: 'X'")
@@ -49,13 +56,18 @@ class Game:
             self.computer.first_move()
         else:
             self.computer.choose_move(self.board)
+        # computer player
         self.board.update(self.computer.move, self.computer.sign)
         self.board.display()
         (self.victory, self.winner) = self.board.check_victory(self.computer.sign)
-        #self.victory, self.winning = result[0], result[1]
+        self.draw = self.board.check_draw(self)
+        if self.draw:
+            self.running = False
+            self.declare_draw()
         if self.victory:
             self.declare_victory()
             self.running = False
+        # human player
         if self.running == True:
             self.human.choose_move(self.board)
             self.board.update(self.human.move, self.human.sign)
@@ -64,10 +76,10 @@ class Game:
             if self.victory:
                 self.declare_victory()
                 self.running = False
-
-        
-            
-
+            #self.draw = self.board.check_draw(self)
+            #if self.draw:
+                #self.running == False
+                #self.declare_draw()
 
 
 

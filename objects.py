@@ -56,7 +56,22 @@ class Board:
         else:
             winner = None
             return victory, winner
+        
+    def check_draw(self, game):
+        #print("winner: ", game.winner)
+        if game.winner == None:
+            nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            if not set(self.fields).intersection(nums):
+                draw = True
+                return draw
+            else:
+                draw = False
+                return draw
+        else:
+            draw = False
+            return draw
 
+    
 # basic class 
 class Player:
     def __init__(self, sign):
@@ -102,6 +117,10 @@ class ComputerPlayer(Player):
 # internal tests #
 
 def main():
+    #game_test()
+    draw_test()
+
+def game_test():
     board = Board()
     human = HumanPlayer("O")
     computer = ComputerPlayer("X")
@@ -127,6 +146,18 @@ def main():
     sleep(2)
     board.check_victory()
 
+def draw_test():
+    board = Board()
+    print(board.fields)
+    board.fields = [ "Y", "Y", "Y", "O", "O", "Y", "O", "Y"]
+    print(board.fields)
+    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    if not set(board.fields).intersection(nums):
+        print("true")
+    else:
+        print("false")
+    
+   
 
 
 if __name__ == "__main__":
