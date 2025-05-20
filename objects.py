@@ -58,7 +58,6 @@ class Board:
             return victory, winner
         
     def check_draw(self, game):
-        #print("winner: ", game.winner)
         if game.winner == None:
             nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
             if not set(self.fields).intersection(nums):
@@ -141,19 +140,17 @@ def game_test():
     board.update(computer.move, computer.sign)
     board.display()
     sleep(2)
-    board.check_victory()
-
+   
     human.choose_move(board)
     board.update(human.move, human.sign)
     board.display()
     sleep(2)
-    board.check_victory()
-
+    
     computer.choose_move(board)
     board.update(computer.move, computer.sign)
     board.display()
     sleep(2)
-    board.check_victory()
+    
 
 def draw_test():
     board = Board()

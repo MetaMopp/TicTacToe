@@ -71,14 +71,10 @@ class Game:
             self.computer.first_move()
         else:
             self.computer.choose_move(self.board)
+            
         # computer player
         self.board.update(self.computer.move, self.computer.sign)
-        #print()
-        
         self.board.display()
-        #print()
-        #sleep(.5)
-        #print()
         (self.victory, self.winner) = self.board.check_victory(self.computer.sign)
         self.draw = self.board.check_draw(self)
         if self.draw:
@@ -87,14 +83,12 @@ class Game:
         if self.victory:
             self.declare_victory()
             self.running = False
+
         # human player
         if self.running == True:
             self.human.choose_move(self.board)
             self.board.update(self.human.move, self.human.sign)
-            #print()
             self.board.display()
-            #print()
-            #sleep(.5)
             (self.victory, self.winner) = self.board.check_victory(self.human.sign)
             if self.victory:
                 self.declare_victory()

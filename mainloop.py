@@ -12,7 +12,7 @@ while game.running:
     if game.running == False:
         sleep(1)
         choice = input('''                   
-               You you want to start a new Game? y/n 
+               Do you want to start a new Game? y/n 
                        ''')
         if choice == "y":
             game.running = True
