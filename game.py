@@ -24,41 +24,61 @@ class Game:
         ''')
         sleep(1)
         print(ttt_font.renderText(' TIC TAC TOE') , end="")
-        sleep(1)
+        sleep(1.2)
         print('''
-                ||================================||
-                ||<> < metamopp[at]gmail.com > <> ||           
-                ||================================||
+                 ||================================||
+                 ||<> < metamopp[at]gmail.com > <> ||           
+                 ||================================||
         ''')
         sleep(1)
         print('''
- / __ \ \__/ / __ \ \__/ / __ \ \__/ / __ \ \__/ / __ \ \__/ / __ \ \_
-/ /  \ \____/ /  \ \____/ /  \ \____/ /  \ \____/ /  \ \____/ /  \ \__
-\ \__/ / __ \ \__/ / __ \ \__/ / __ \ \__/ / __ \ \__/ / __ \ \__/ / _
- \____/ /  \ \____/ /  \ \____/ /  \ \____/ /  \ \____/ /  \ \____/ / 
+ / __ \ \__/ / __ \ \__/ / __ \ \__/ / __ \ \__/ / __ \ \__/ / __ \ 
+/ /  \ \____/ /  \ \____/ /  \ \____/ /  \ \____/ /  \ \____/ /  \ \_
+\ \__/ / __ \ \__/ / __ \ \__/ / __ \ \__/ / __ \ \__/ / __ \ \__/ / 
+ \____/ /  \ \____/ /  \ \____/ /  \ \____/ /  \ \____/ /  \ \____/  
         ''')
+        sleep(.5)
+
+    def explain(self):
+        print()
+        print('''
+                      ~> Computer's sign: X <~
+                      ~~>   Your sign: O   <~~
+              ''')
+        sleep(2.5)
+        print()
 
     def declare_victory(self):
-        print(f"{self.winner} won!")
-        sleep(3)
+        print(f"                               {self.winner} won!")
+        sleep(1)
 
     def declare_draw(self):
-        print("Draw.")
-        sleep(3)
+        print('''
+                             Draw!
+              ''')
+        sleep(1)
 
     def run(self):
         # start condition
         if "X" not in self.board.fields:
+            self.explain()
+            print('''                    
+                             Good luck!
+                  ''')
             self.board.display()
-            print("Computer's sign: 'X'")
-            print("Your sign: 'O'")
             print()
+            
             self.computer.first_move()
         else:
             self.computer.choose_move(self.board)
         # computer player
         self.board.update(self.computer.move, self.computer.sign)
+        #print()
+        
         self.board.display()
+        #print()
+        #sleep(.5)
+        #print()
         (self.victory, self.winner) = self.board.check_victory(self.computer.sign)
         self.draw = self.board.check_draw(self)
         if self.draw:
@@ -71,16 +91,14 @@ class Game:
         if self.running == True:
             self.human.choose_move(self.board)
             self.board.update(self.human.move, self.human.sign)
+            #print()
             self.board.display()
+            #print()
+            #sleep(.5)
             (self.victory, self.winner) = self.board.check_victory(self.human.sign)
             if self.victory:
                 self.declare_victory()
                 self.running = False
-            #self.draw = self.board.check_draw(self)
-            #if self.draw:
-                #self.running == False
-                #self.declare_draw()
-
 
 
 
