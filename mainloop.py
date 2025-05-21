@@ -12,17 +12,17 @@ while game.running:
     if game.running == False:
         sleep(1)
         choice = input('''                   
-               Do you want to start a new Game? y/n 
-                       ''')
+                   Do you want to start a new Game? 
+                               y/n: ''')
         if choice == "y":
             game.running = True
             sleep(1)
             game.board.fields = [1, 2, 3, 4, 5, 6, 7, 8, 9]
             print('''     
-                         ~~~~~~~~~~~~~~~~                
+                         ~~~~~~~~~~~~~~~~~                
                            Welcome back!
                   ''')
-        else:
+        elif choice == "n":
             exit()
 
 
