@@ -1,3 +1,5 @@
+# metamopp[at]gmail.com
+
 from game import Game
 from time import sleep
 

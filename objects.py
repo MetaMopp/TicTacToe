@@ -1,3 +1,5 @@
+# metamopp[at]gmail.com
+
 from random import randint 
 from time import sleep
 
