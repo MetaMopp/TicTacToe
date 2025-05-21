@@ -1,3 +1,5 @@
+# metamopp[at]gmail.com
+
 from objects import Board
 from objects import HumanPlayer
 from objects import ComputerPlayer
