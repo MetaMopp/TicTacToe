@@ -17,7 +17,7 @@
 |                                                                       |
 |                                                                       |
 |                                                                       |
-|                       metamopp[@]gmail.com  2025                      |
+|        Copyright (C) 2025 MetaMopp - metamopp[@]gmail.com  2025       |
 |                                                                       |
 `-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-etf-'
 
